@@ -16,12 +16,12 @@ public class ServicioDeDatos extends Service {
     }
 
     @Override
-    public  int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
 
         final Uri sms = Telephony.Sms.CONTENT_URI;
         final ContentResolver cr = getContentResolver();
 
-        Runnable leer=new Runnable() {
+        Runnable leer = new Runnable() {
             @Override
             public void run() {
                 while (true) {
@@ -48,15 +48,14 @@ public class ServicioDeDatos extends Service {
                 }
             }
         };
-            Thread trabajador = new Thread(leer);
-                   trabajador.start();
-                   return START_STICKY;
-        }
+        Thread trabajador = new Thread(leer);
+        trabajador.start();
+        return START_STICKY;
+    }
 
-        @Override
-        public IBinder onBind (Intent intent){
-            // TODO: Return the communication channel to the service.
-            throw new UnsupportedOperationException("Not yet implemented");
-        }
-
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }
